@@ -1,28 +1,104 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <v-app-bar
+      app
+      color="primary"
+      dark
+    >
+			<v-spacer />
+			Waypoint showcase
+			<v-spacer />
+    </v-app-bar>
+
+    <v-main>
+			<v-row class="d-flex align-center justify-center">
+				<v-col xl="8" lg="8">
+					<v-card-title>Module 1: Utilizing Vue for Waypoint Solutions</v-card-title>
+					<v-expansion-panels>
+						<v-expansion-panel v-for="(panel, index) in panels" :key="panel.title">
+							<v-expansion-panel-header>
+								Unit {{ index + 1 }}
+								<v-text-field :value="panel.title" class="pl-8" />
+							</v-expansion-panel-header>
+							<v-expansion-panel-content>
+								<v-list>
+									<v-list-item v-for="item in panel.content" :key="item" class="font-italic">
+										<v-text-field :value="item" />
+									</v-list-item>
+								</v-list>
+								<v-btn style="width: 100%" color="green lighten-2" @click="panel.content.push('And another thing...')">+</v-btn>
+							</v-expansion-panel-content>
+						</v-expansion-panel>
+					</v-expansion-panels>
+				</v-col>
+
+				<v-col xl="8" lg="8">
+					<v-btn style="width: 100%" color="green lighten-2" @click="panels.push(panels[panels.length - 1])">+</v-btn>
+				</v-col>
+			</v-row>
+
+			<v-row class="text-center">
+				<v-col>
+					<v-btn color="primary">
+						Convert into .Doc and .YML
+					</v-btn>
+				</v-col>
+			</v-row>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+  components: {
+  },
+
+  data: () => ({
+    panels: [
+			{
+				title: "Use Vue to create tech solutions",
+				content: [
+					"Lorem ipsum dolor",
+					"Sit amet terietur marmot",
+					"possit materiar",
+					"possit materiari",
+					"quellem vin quot."
+				]
+			},
+			{
+				title: "Simplify work-intensive assignments",
+				content: [
+					"Lorem ipsum dolor",
+					"Sit amet terietur marmot",
+					"possit materiar",
+					"possit materiari",
+					"quellem vin quot."
+				]
+			},
+			{
+				title: "Understand file layout at a glance",
+				content: [
+					"Lorem ipsum dolor",
+					"Sit amet terietur marmot",
+					"possit materiar",
+					"possit materiari",
+					"quellem vin quot."
+				]
+			},
+			{
+				title: "Suggest time-saving alternatives",
+				content: [
+					"Lorem ipsum dolor",
+					"Sit amet terietur marmot",
+					"possit materiar",
+					"possit materiari",
+					"quellem vin quot."
+				]
+			}
+		]
+  }),
+};
+</script>
